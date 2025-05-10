@@ -5,6 +5,8 @@ interface Env {
 	PREMIER_LEAGUE_API: string;
 }
 
+const PREMIER_LEAGUE_API = "https://www.chelseafc.com/en/api/fixtures/league-table?entryId=30EGwHPO9uwBCc75RQY6kg";
+
 // Define our MCP agent with tools
 export class MyMCP extends McpAgent {
 	server = new McpServer({
@@ -16,8 +18,7 @@ export class MyMCP extends McpAgent {
 		
 		// Premier League Table tool
 		this.server.tool("getPremierLeagueTable", {}, async () => {
-			const apiUrl =
-				(this.env as Env).PREMIER_LEAGUE_API;
+			const apiUrl = PREMIER_LEAGUE_API;
 			try {
 				const response = await fetch(apiUrl);
 				if (!response.ok) {
